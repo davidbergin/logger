@@ -43,6 +43,6 @@ public class UtilTest {
     @Test
     public void shouldFindExpectedMappingAndNotIntegerDefault() {
         int answer = Config.instance().getInteger("logger.input.threads",123);
-        assertEquals(10, answer);
+        assertEquals(12, answer);
     }    
 }
