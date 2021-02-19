@@ -27,9 +27,12 @@ The tool identifies files based on the extension only. The extension allows the 
 
 To add support for a different file type, a new implementation of the `Handler` interface would be written and supporting configuration to bind this implementation added to `app.properties`
 
+The use of SpringBoot as a packaging and runtime framework would allow the easy addition of a REST endpoint, for enquiring on processing status - something which is useful across a fleet of instances in a production context.
+
 
 ## Logging
 Logging is very simple and is provided by the `Trace` class. Logs go to STDOUT.
+
 
 ## Performance and scalability
 The tool uses a thread pool to concurrently process input files, and the size of this pool is controlled by the `logger.input.threads` property in the embedded `app.properties` confguration file.
@@ -39,6 +42,7 @@ Altering this value to take best advantage of the CPU, memory and I/O capacity o
 For larger workloads, multiple copies of this tool would run, potentially on different machines, each reading from a distinct input directory and producing a distinct output file, for later combination.
 
 The tool was timed on a 6-core system processing 8000 files in 2.3 seconds. XML file processing is significantly more expensive than JSON processing.
+
 
 ## Patterns used
 ### Singleton
